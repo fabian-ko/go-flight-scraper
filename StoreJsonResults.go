@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"os"
 )
 
 type Query struct {
@@ -16,7 +16,7 @@ type Query struct {
 func StoreJSONResults(results []FlightResult, filename string) {
 	jsonString, err := json.MarshalIndent(results, "", "\t")
 	LogErrorIfNotNull(err)
-	err = ioutil.WriteFile(filename, jsonString, 0644)
+	err = os.WriteFile(filename, jsonString, 0644)
 	LogErrorIfNotNull(err)
 }
 
@@ -30,6 +30,6 @@ func StoreJSONQueries(searchInput SearchInput, recipient string, filename string
 	}
 	jsonString, err := json.MarshalIndent(query, "", "\t")
 	LogErrorIfNotNull(err)
-	err = ioutil.WriteFile(filename, jsonString, 0644)
+	err = os.WriteFile(filename, jsonString, 0644)
 	LogErrorIfNotNull(err)
 }

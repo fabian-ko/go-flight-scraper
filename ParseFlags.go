@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"regexp"
@@ -51,13 +51,13 @@ func isDateValid(datePtr *string) bool {
 }
 
 func isIATAValid(departurePtr *string) bool {
-	//api_key has only 1000 requesst available per month.
-	var api_key string = "b6a88e00-390d-4187-930f-550ea564f9b3"
-	url := "https://airlabs.co/api/v9/airports.csv?iata_code=" + *departurePtr + "&api_key=" + api_key
+	//apiKey has only 1000 requesst available per month.
+	var apiKey string = "b6a88e00-390d-4187-930f-550ea564f9b3"
+	url := "https://airlabs.co/api/v9/airports.csv?iata_code=" + *departurePtr + "&api_key=" + apiKey
 	req, _ := http.NewRequest("GET", url, nil)
 	res, _ := http.DefaultClient.Do(req)
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 	if string(body) == "" {
 		return false
 	} else {

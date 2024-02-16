@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"os"
 	"strings"
 	"testing"
 
@@ -10,7 +10,7 @@ import (
 
 func TestBuildResultsHTMLTemplate(t *testing.T) {
 	t.Run("It parses and returns flights results", func(t *testing.T) {
-		fileContent, _ := ioutil.ReadFile("data-test/test_results_html")
+		fileContent, _ := os.ReadFile("data-test/test_results_html")
 		searchInput := SearchInput{"FCO", "RTM", "2020-02-02"}
 		want := trimWhitespaces(string(fileContent))
 		got := trimWhitespaces(string(BuildResultsHTMLTemplate(getResultList(), searchInput)))

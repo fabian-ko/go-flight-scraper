@@ -1,11 +1,13 @@
 package main
 
 import (
+	"io"
+	"net/http"
+	"os"
+
 	"github.com/antchfx/htmlquery"
 	"go.zoe.im/surferua"
 	"golang.org/x/net/html"
-	"io/ioutil"
-	"net/http"
 )
 
 // FetchAndStorePage fetches a web page and stores its content
@@ -19,10 +21,10 @@ func FetchAndStorePage(url string, filename string) (doc *html.Node) {
 	response, err := http.DefaultClient.Do(request)
 	LogFatalAndExitIfNotNull(err)
 
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := io.ReadAll(response.Body)
 	LogFatalAndExitIfNotNull(err)
 
-	ioutil.WriteFile(filename, []byte(body), 0644)
+	os.WriteFile(filename, []byte(body), 0644)
 	doc, err = htmlquery.LoadDoc(filename)
 	LogFatalAndExitIfNotNull(err)
 

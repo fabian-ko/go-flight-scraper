@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestStoreJsonResults(t *testing.T) {
 		StoreJSONResults(list, filename)
 
 		want := getWantedJSON()
-		got, _ := ioutil.ReadFile(filename)
+		got, _ := os.ReadFile(filename)
 		assert.Equal(t, want, string(got))
 	})
 }
