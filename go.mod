@@ -1,4 +1,4 @@
-module github.com/antodippo/flight-scraper
+module github.com/fabian-ko/go-flight-scraper
 
 go 1.22
 
