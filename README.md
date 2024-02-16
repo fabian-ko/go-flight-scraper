@@ -1,13 +1,13 @@
 # Flight scraper
 
-![Build](https://github.com/antodippo/flight-scraper/workflows/Build/badge.svg?branch=master)
-![Release](https://github.com/antodippo/flight-scraper/workflows/Release/badge.svg)
-[![Go Report](https://goreportcard.com/badge/github.com/antodippo/flight-scraper)](https://goreportcard.com/report/github.com/antodippo/flight-scraper)
+![Build](https://github.com/fabian-ko/go-flight-scraper/workflows/Build/badge.svg?branch=master)
+![Release](https://github.com/fabian-ko/go-flight-scraper/workflows/Release/badge.svg)
+[![Go Report](https://goreportcard.com/badge/github.com/fabian-ko/-goflight-scraper)](https://goreportcard.com/report/github.com/fabian-ko/go-flight-scraper)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 It's a simple flight prices scraper written in Go. Given a route and a date, it's gonna query [Kayak.com](https://www.kayak.com) website, parse the page, and send the information to the provided email recipient.
 
-The simplest way to use it is to [download it for your operating system](https://github.com/antodippo/flight-scraper/releases/latest) and run:
+The simplest way to use it is to [download it for your operating system](https://github.com/fabian-ko/go-flight-scraper/releases/latest) and run:
 
 ```bash
 $ ./flight-scraper -departure=FCO -arrival=AMS -date=2020-06-15 -recipient=alice@test.com,bob@test.com
